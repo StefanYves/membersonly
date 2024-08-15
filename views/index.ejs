@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include("./navbar") -%>
+    <div class="container">
+      <ul class="messages">
+        <% if (messages.length > 0) { %> <% messages.forEach((message) => { %>
+        <li>
+          <p><strong><%= message.title %></strong></p>
+          <p><%= message.username %></p>
+          <p><%= message.text %></p>
+          <p>
+            <small><%= new Date(message.timestamp).toLocaleString() %></small>
+          </p>
+        </li>
+        <% }) %> <% } else { %>
+        <li>No messages found.</li>
+        <% } %>
+      </ul>
+      <a href="/newMessage" class="button">Add a new message</a>
+      <a href="/member" class="button">Delete your membership</a>
+      <a href="/admin" class="button">Become an admin</a>
+    </div>
+    <%- include("./footer") -%>
+    </div>
+  </body>
+</html>

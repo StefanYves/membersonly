@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include("./navbar") -%>
+    <div class="container">
+      <ul class="messages">
+        <% if (messages.length > 0) { %> <% messages.forEach((message) => { %>
+        <li>
+          <p><strong><%= message.title %></strong></p>
+          <p><%= message.username %></p>
+          <p><%= message.text %></p>
+          <p>
+            <small><%= new Date(message.timestamp).toLocaleString() %></small>
+          </p>
+          <button class="delete-btn" data-id="<%= message.message_id %>">
+            Delete
+          </button>
+        </li>
+        <% }) %> <% } else { %>
+        <li>No messages found.</li>
+        <% } %>
+      </ul>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".delete-btn").forEach(function (button) {
+          button.addEventListener("click", function () {
+            const messageId = this.getAttribute("data-id");
+            fetch(`/deletemessages/${messageId}`, {
+              method: "DELETE",
+            })
+              .then((response) => {
+                if (response.ok) {
+                  this.closest("li").remove();
+                } else {
+                  response
+                    .json()
+                    .then((data) =>
+                      alert(`Failed to delete message: ${data.error}`)
+                    );
+                }
+              })
+              .catch((error) => {
+                console.error("Error deleting message:", error);
+              });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

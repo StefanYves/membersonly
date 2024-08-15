@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include("./navbar") -%>
+    <div class="container">
+      <form action="/admin" method="POST">
+        <input type="hidden" name="userId" value="<%= user.id %>" />
+        <label for="isAdmin">Membership Status:</label>
+        <select name="isAdmin" id="isAdmin">
+          <option value="true" <%= user.isadmin ? "selected" : "" %>>Active</option>
+          <option value="false" <%= !user.isadmin ? "selected" : "" %>>Inactive</option>
+        </select>
+        <button type="submit">Update Status</button>
+      </form>
+    </div>
+    <%- include("./footer") -%>
+  </body>
+</html>

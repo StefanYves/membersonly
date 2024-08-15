@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include ("./navbar") -%>
+    <div class="container">
+      <h1>Sign Up</h1>
+      <form action="/sign-up" method="POST">
+        <label for="firstname">Firstname</label>
+        <input
+          id="firstname"
+          name="firstname"
+          placeholder="firstname"
+          type="text"
+        />
+        <label for="lastname">lastname</label>
+        <input
+          id="lastname"
+          name="lastname"
+          placeholder="lastname"
+          type="text"
+        />
+        <label for="username">Username</label>
+        <input
+          id="username"
+          name="username"
+          placeholder="username"
+          type="text"
+        />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+    <%- include ("./footer") -%>
+  </body>
+</html>

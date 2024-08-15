@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <%- include("./navbar") -%>
+    <div class="container">
+      <ul class="messages">
+        <% if (messages.length > 0) { %> <% messages.forEach((message) => { %>
+        <li>
+          <p><strong><%= message.title %></strong></p>
+          <p><%= message.text %></p>
+        </li>
+        <% }) %> <% } else { %>
+        <li>No messages found.</li>
+        <% } %>
+      </ul>
+      <p>
+        In order to see the username and timestamp of the messages, you have to
+        become a member!
+      </p>
+      <a href="/newMessage" class="button">Add a new message</a>
+      <a href="/member" class="button">Become a club member</a>
+    </div>
+    <%- include("./footer") -%>
+  </body>
+</html>
