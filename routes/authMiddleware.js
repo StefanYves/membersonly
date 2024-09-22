@@ -25,7 +25,7 @@ module.exports.isMember = (req, res, next) => {
 };
 
 module.exports.isAdmin = (req, res, next) => {
-  if (req.isAuthenticated() && req.user.isAdmin) {
+  if (req.isAuthenticated() && req.user.isadmin) {
     next();
   } else {
     res.redirect("/");
