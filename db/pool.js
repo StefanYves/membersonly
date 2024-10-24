@@ -5,4 +5,7 @@ const connectionString = process.env.DATABASE_URL;
 
 module.exports = new Pool({
   connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false, // This allows self-signed certificates
+  },
 });
